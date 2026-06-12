@@ -1,1 +1,2 @@
 print('Anato')
+print('Greed')
