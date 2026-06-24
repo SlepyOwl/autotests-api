@@ -1,2 +1,2 @@
-print('Anato')
+print('Anosa')
 print('Greed')
