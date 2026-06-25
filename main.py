@@ -1,2 +1,0 @@
-print('Anosa')
-print('Greed')
