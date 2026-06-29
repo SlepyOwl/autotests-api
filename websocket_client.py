@@ -11,9 +11,9 @@ async def client():
         print(f"Отправка:{message}")
         await websocket.send(message)
 
-        for _ in range(5):    
+        for i in range(5):    
             response = await websocket.recv()
-            print(f"{response}")
+            print(f"{i+1} {response}")
 
 
 
