@@ -19,8 +19,6 @@ def server():
 
         messages = []
         messages.append(data)
-        
-        # ✅ Правильная отправка: объединить список и закодировать
         response = '\n'.join(messages)
         client_socket.send(response.encode())
 
