@@ -1,37 +1,42 @@
-from clients.api_client import APIClient
-
-from httpx import Response
-
 from typing import TypedDict
 
+from httpx import Client, Response
 
-class UserCreateRequest(TypedDict):
-    """Структура данных для создания пользователя."""
-    email: str 
+from clients.api_client import APIClient
+
+
+class CreateUserRequestDict(TypedDict):
+    """
+    Описание структуры запроса для создания пользователя.
+
+    Attributes:
+        email (str): Электронная почта пользователя.
+        password (str): Пароль пользователя.
+        lastName (str): Фамилия пользователя.
+        firstName (str): Имя пользователя.
+        middleName (str): Отчество пользователя.
+    """
+
+    email: str
     password: str
     lastName: str
     firstName: str
     middleName: str
 
+
 class PublicUsersClient(APIClient):
     """
-    Клиент для публичных операций с пользователями.
-    
-    Предназначен для работы с API пользователей без обязательной авторизации.
-    Наследуется от абстрактного класса APIClient для обеспечения единообразия структуры API-клиентов.
-    
-    :param client: экземпляр httpx.Client для выполнения HTTP-запросов
+    Клиент для работы с публичными методами /api/v1/users.
     """
-    def __init__(self, client):
+
+    def create_user_api(self, request: CreateUserRequestDict) -> Response:
         """
-        Инициализирует клиент PublicUsersClient.
-        
-        :param client: экземпляр httpx.Client для выполнения HTTP-запросов
+        Создаёт нового пользователя через публичный API.
+
+        Args:
+            request (CreateUserRequestDict): Словарь с данными нового пользователя. Должен содержать email, пароль, фамилию, имя и отчество.
+
+        Returns:
+            Response: Объект ответа от сервера, содержащий статус и тело ответа.
         """
-        super().__init__(client)
-    
-    def create_user_api():
-        """
-        """
-        super().post('/api/v1/users', UserCreateRequest )
-        return Response
+        return self.post("/api/v1/users", json=request)
