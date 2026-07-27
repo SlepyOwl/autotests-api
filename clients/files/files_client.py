@@ -5,6 +5,12 @@ from httpx import Response
 from clients.api_client import APIClient
 from clients.private_http_builder import AuthenticationUserDict, get_private_http_client
 
+class File(TypedDict):
+    id: str
+    url: str
+    filename: str
+    directory: str
+    
 
 class CreateFileRequestDict(TypedDict):
     """
@@ -14,6 +20,8 @@ class CreateFileRequestDict(TypedDict):
     directory: str
     upload_file: str
 
+class CreateFileResponseDict(TypedDict):
+    file: File
 
 class FilesClient(APIClient):
     """
@@ -51,6 +59,9 @@ class FilesClient(APIClient):
         """
         return self.delete(f"/api/v1/files/{file_id}")
 
+    def create_file(self, request: CreateFileRequestDict) -> CreateFileResponseDict:
+        return self.create_file_api(request).json()
+        
 
 # Добавляем builder для FilesClient
 def get_files_client(user: AuthenticationUserDict) -> FilesClient:

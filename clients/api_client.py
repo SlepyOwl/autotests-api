@@ -4,7 +4,7 @@ from httpx._types import RequestData, RequestFiles
 
 # класс клиента
 class APIClient:                    
-    def __init__(self,client:Client):
+    def __init__(self, client: Client):
         """
         Базовый API клиент, принимающий объект httpx.Client.
         
@@ -14,7 +14,6 @@ class APIClient:
 
 
     # get запрос
-
     def get(
             self,
             url:URL | str,
