@@ -1,4 +1,4 @@
-from pydantic import BaseModel,Field,ConfigDict
+from pydantic import BaseModel,Field,ConfigDict,EmailStr
 
 
 class UserSchema(BaseModel):
@@ -9,7 +9,7 @@ class UserSchema(BaseModel):
 
 
     id: str
-    email: str
+    email: EmailStr
     last_name: str = Field(alias="lastName")
     first_name: str = Field(alias="firstName")
     middle_name: str = Field(alias="middleName")
