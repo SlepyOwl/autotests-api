@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from httpx import Client
 
 from clients.authentication.authentication_client import get_authentication_client
-from clients.authentication.authentication_shema import LoginRequestShema
+from clients.authentication.authentication_shema import LoginRequestSchema
 class AuthenticationUserShema(BaseModel):  # Структура данных пользователя для авторизации
     email: str
     password: str
@@ -21,7 +21,7 @@ def get_private_http_client(user: AuthenticationUserShema) -> Client:
     authentication_client = get_authentication_client()
 
     # Инициализируем запрос на аутентификацию
-    login_request = LoginRequestShema(email=user.email, password=user.password)
+    login_request = LoginRequestSchema(email=user.email, password=user.password)
     # Выполняем POST запрос и аутентифицируемся
     login_response = authentication_client.login(login_request)
 

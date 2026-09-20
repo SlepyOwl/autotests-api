@@ -3,7 +3,7 @@ import httpx
 from fakers import get_random_email
 
 create_user_payload = {
-  "email": get_random_email(),
+  "email": fake.email(),
   "password": "string",
   "lastName": "string",
   "firstName": "string",
