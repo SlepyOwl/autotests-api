@@ -1,0 +1,10 @@
+
+def test_first_try():
+    print("Щкорпион теиру")
+
+def test_assert_positive_case():
+    assert (2+2) == 4
+    
+def test_assert_negative_case():
+    x, y = 5, 2
+    assert (y + y) == x, "Anosa"
