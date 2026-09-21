@@ -10,15 +10,7 @@ from tools.fakers import fake
 
 public_users_client = get_public_users_client()
 
-user_to_create = CreateUserRequestSchema(
-    email=fake.email(),
-    password="string",
-    last_name="string",
-    first_name="string",
-    middle_name="string"
-    
-)
-
+user_to_create = CreateUserRequestSchema()
 create_user_response = public_users_client.create_user(user_to_create)
 
 authentication_user = AuthenticationUserShema(
@@ -30,11 +22,7 @@ files_client = get_files_client(authentication_user)
 courses_client = get_courses_client(authentication_user)
 exercises_client = get_exercises_client(authentication_user)
 
-file_to_create = CreateFileRequestSchema(
-    filename="lion.png",
-    directory="lions", 
-    upload_file="testdata/files/lion.png"
-)
+file_to_create = CreateFileRequestSchema()
 
 create_file_response = files_client.create_file(file_to_create)
 print("Create file data: ", create_file_response)
