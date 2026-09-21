@@ -11,7 +11,7 @@ class CourseSchema(BaseModel):
 
     id: str
     title: str
-    max_score: int = Field(alias="minScore")
+    max_score: int = Field(alias="maxScore")
     min_score: int = Field(alias="minScore")
     description: str 
     previewFile: FileSchema 
