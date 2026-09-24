@@ -3,7 +3,7 @@ from httpx import Response
 
 from clients.api_client import APIClient
 from clients.public_http_builder import get_public_http_client
-from clients.authentication.authentication_shema import LoginRequestSchema, LoginResponseShema, RefreshRequestShema
+from clients.authentication.authentication_shema import LoginRequestSchema, LoginResponseSchema, RefreshRequestShema
 
 
 
@@ -36,9 +36,9 @@ class AuthenticationClient(APIClient):
             json=request.model_dump(by_alias=True))
 
     # Добавили метод login
-    def login(self, request: LoginRequestSchema) -> LoginResponseShema:
+    def login(self, request: LoginRequestSchema) -> LoginResponseSchema:
         response = self.login_api(request)  # Отправляем запрос на аутентификацию
-        return LoginResponseShema.model_validate_json(response.text)
+        return LoginResponseSchema.model_validate_json(response.text)
 
 def get_authentication_client() -> AuthenticationClient:
     """

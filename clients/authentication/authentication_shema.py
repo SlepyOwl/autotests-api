@@ -6,7 +6,7 @@ class TokenShema(BaseModel):
 
     token_type: str = Field(alias="tokenType")
     access_token: str = Field(alias="accessToken")
-    refres_token: str = Field(alias="refreshToken")
+    refresh_token: str = Field(alias="refreshToken")
 
 class LoginRequestSchema(BaseModel):
 
@@ -14,7 +14,7 @@ class LoginRequestSchema(BaseModel):
     password: str = Field(default_factory=fake.password)
 
 
-class LoginResponseShema(BaseModel):  
+class LoginResponseSchema(BaseModel):  
 
     token: TokenShema
 

@@ -4,8 +4,11 @@ from clients.users.users_schema import CreateUserRequestSchema,CreateUserRespons
 from tools.assertions.base import assert_status_code
 from tools.assertions.schema import validate_json_schema
 from tools.assertions.users import assert_create_user_response
+import pytest
 
 
+@pytest.mark.users
+@pytest.mark.regression
 def test_create_user():
     public_users_client = get_public_users_client()
 
