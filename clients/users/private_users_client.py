@@ -3,8 +3,8 @@ from typing import TypedDict
 from httpx import Response
 
 from clients.api_client import APIClient
-from clients.private_http_builder import get_private_http_client, AuthenticationUserShema
-from clients.users.users_schema import UpdateUserRequestSchema, UpdateUserResponseSchema, GetUserResponseShema
+from clients.private_http_builder import get_private_http_client, AuthenticationUserSchema
+from clients.users.users_schema import UpdateUserRequestSchema, UpdateUserResponseSchema, GetUserResponseSchema
 
 
 
@@ -49,12 +49,12 @@ class PrivateUsersClient(APIClient):
         """
         return self.delete(f"/api/v1/users/{user_id}")
 
-    def get_user(self, user_id: str) -> GetUserResponseShema:
+    def get_user(self, user_id: str) -> GetUserResponseSchema:
         response = self.get_user_api(user_id)
-        return GetUserResponseShema.model_validate_json(response.text)
+        return GetUserResponseSchema.model_validate_json(response.text)
 
 # Добавляем builder для PrivateUsersClient
-def get_private_users_client(user: AuthenticationUserShema) -> PrivateUsersClient:
+def get_private_users_client(user: AuthenticationUserSchema) -> PrivateUsersClient:
     """
     Функция создаёт экземпляр PrivateUsersClient с уже настроенным HTTP-клиентом.
 

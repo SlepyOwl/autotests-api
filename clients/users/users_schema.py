@@ -51,7 +51,7 @@ class UpdateUserResponseSchema(BaseModel):
     """
     user: UserSchema    
 
-class GetUserResponseShema(BaseModel):
+class GetUserResponseSchema(BaseModel):
     user: UserSchema    
 
 

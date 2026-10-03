@@ -3,7 +3,7 @@ from httpx import Response
 
 from clients.api_client import APIClient
 from clients.public_http_builder import get_public_http_client
-from clients.authentication.authentication_shema import LoginRequestSchema, LoginResponseSchema, RefreshRequestShema
+from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema, RefreshRequestSchema
 
 
 
@@ -24,7 +24,7 @@ class AuthenticationClient(APIClient):
             json=request.model_dump(by_alias=True)
             )
 
-    def refresh_api(self, request: RefreshRequestShema) -> Response:
+    def refresh_api(self, request: RefreshRequestSchema) -> Response:
         """
         Метод обновляет токен авторизации.
 

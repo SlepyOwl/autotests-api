@@ -1,7 +1,7 @@
 from clients.api_client import APIClient
 from httpx import Response
 from clients.exercises.exercises_schema import CreateExerciseRequestSchema, GetExercisesQuerySchema, GetExercisesResponseSchema, UpdateExerciseRequestSchema
-from clients.private_http_builder import AuthenticationUserShema, get_private_http_client
+from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
 
 class ExercisesClient(APIClient):
     """
@@ -66,7 +66,7 @@ class ExercisesClient(APIClient):
         """
         return self.delete(f"/api/v1/exercises/{exercise_id}")
 
-def get_exercises_client(user: AuthenticationUserShema) -> ExercisesClient:
+def get_exercises_client(user: AuthenticationUserSchema) -> ExercisesClient:
     """
     Функция создаёт экземпляр ExercisesClient с уже настроенным HTTP-клиентом.
 
