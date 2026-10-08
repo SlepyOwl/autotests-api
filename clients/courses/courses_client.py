@@ -2,7 +2,7 @@ from httpx import Response
 
 from clients.api_client import APIClient
 from clients.files.files_schema import FileSchema
-from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
+from clients.users.private_http_builder import AuthenticationUserSchema, get_private_http_client
 from clients.users.users_schema import UserSchema
 from clients.courses.courses_schema import CourseSchema,GetCoursesQuerySchema,CreateCourseRequestSchema,UpdateCourseRequestSchema,CreateCourseResponseSchema
 

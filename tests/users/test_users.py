@@ -15,6 +15,7 @@ import pytest
 class TestUsers:
     @pytest.mark.parametrize("domain", ["mail.ru", "gmail.com", "example.com"])
     def test_create_user(self, domain: str, public_users_client: PublicUsersClient):
+
         request = CreateUserRequestSchema(email=fake.email(domain=domain))
         response = public_users_client.create_user_api(request)
         response_data = CreateUserResponseSchema.model_validate_json(response.text)
@@ -25,8 +26,10 @@ class TestUsers:
         validate_json_schema(response.json(), response_data.model_json_schema())
 
     def test_get_user_me(
-        self, function_user: UserFixture, private_users_client: PrivateUsersClient
-    ):
+            self, 
+            function_user: UserFixture, 
+            private_users_client: PrivateUsersClient):
+
         response = private_users_client.get_user_me_api()
         response_data = GetUserResponseSchema.model_validate_json(response.text)
 

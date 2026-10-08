@@ -1,6 +1,6 @@
 from clients.courses.courses_client import get_courses_client
 from clients.files.files_client import get_files_client
-from clients.private_http_builder import AuthenticationUserSchema
+from clients.users.private_http_builder import AuthenticationUserSchema
 from clients.users.public_users_client import get_public_users_client
 from clients.users.users_schema import CreateUserRequestSchema
 from clients.files.files_schema import CreateFileRequestSchema
