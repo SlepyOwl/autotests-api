@@ -9,7 +9,7 @@ class ExerciseFixture(BaseModel):
     request: CreateExerciseRequestSchema
     response: CreateExerciseResponseSchema
 
-@pytest.fixture.exercise
+@pytest.fixture
 def exercises_client(function_user: UserFixture) -> ExercisesClient:
     return get_exercises_client(function_user.authentication_user)
 
