@@ -15,7 +15,7 @@ def assert_create_user_response(request: CreateUserRequestSchema, response: Crea
     assert_equal(response.user.first_name, request.first_name, "first_name")
     assert_equal(response.user.middle_name, request.middle_name, "middle_name")
 
-def assert_users(actual:UserSchema, expected:UserSchema):
+def assert_user(actual:UserSchema, expected:UserSchema):
     
     assert_equal(actual.id, expected.id, "id")
     assert_equal(actual.email, expected.email, "email")
@@ -27,4 +27,4 @@ def assert_get_user_response(
     get_user_response: GetUserResponseSchema,
     create_user_response: CreateUserResponseSchema,
 ):
-    assert_users(get_user_response.user, create_user_response.user)
+    assert_user(get_user_response.user, create_user_response.user)
