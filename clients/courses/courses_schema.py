@@ -14,9 +14,9 @@ class CourseSchema(BaseModel):
     max_score: int = Field(alias="maxScore")
     min_score: int = Field(alias="minScore")
     description: str 
-    previewFile: FileSchema 
+    preview_file: FileSchema = Field(alias="previewFile")
     estimated_time: str = Field(alias="estimatedTime")
-    createdByUser: UserSchema 
+    created_by_user: UserSchema = Field(alias="createdByUser")
 
 
 

@@ -1,4 +1,4 @@
-from clients.courses.courses_schema import CourseSchema, GetCoursesResponseSchema, UpdateCourseRequestSchema, UpdateCourseResponseSchema
+from clients.courses.courses_schema import CourseSchema, CreateCourseRequestSchema, CreateCourseResponseSchema, GetCoursesResponseSchema, UpdateCourseRequestSchema, UpdateCourseResponseSchema
 from tools.assertions.base import assert_equal, assert_length
 from tools.assertions.files import assert_file
 from tools.assertions.users import assert_user
@@ -39,3 +39,19 @@ def assert_get_courses_response(
     assert_length(get_courses_response.courses, create_course_responses, "courses")
     for index, create_course_response in enumerate(create_course_responses):
         assert_course(get_courses_response.courses[index], create_course_response.course)
+
+def assert_create_course_response(
+    request: CreateCourseRequestSchema, 
+    response: CreateCourseResponseSchema
+):
+    """
+    Проверяет, что данные в ответе API совпадают с данными запроса.
+    Особое внимание уделяется связанным объектам (файл и пользователь).
+    """
+    # Проверяем основные поля курса
+    assert response.course.title == request.title
+    assert response.course.description == request.description
+    assert response.course.max_score == request.max_score
+    assert response.course.min_score == request.min_score
+    assert response.course.preview_file.id == request.preview_file_id
+    assert response.course.created_by_user.id == request.created_by_user_id
