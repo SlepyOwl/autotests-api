@@ -48,10 +48,9 @@ def assert_create_course_response(
     Проверяет, что данные в ответе API совпадают с данными запроса.
     Особое внимание уделяется связанным объектам (файл и пользователь).
     """
-    # Проверяем основные поля курса
-    assert response.course.title == request.title
-    assert response.course.description == request.description
-    assert response.course.max_score == request.max_score
-    assert response.course.min_score == request.min_score
-    assert response.course.preview_file.id == request.preview_file_id
-    assert response.course.created_by_user.id == request.created_by_user_id
+    assert_equal(response.course.title, request.title)
+    assert_equal(response.course.description, request.description)
+    assert_equal(response.course.max_score, request.max_score)
+    assert_equal(response.course.min_score, request.min_score)
+    assert_equal(response.course.preview_file.id, request.preview_file_id)
+    assert_equal(response.course.created_by_user.id, request.created_by_user_id)

@@ -17,6 +17,6 @@ def exercises_client(function_user: UserFixture) -> ExercisesClient:
 def function_exercise(
     exercises_client: ExercisesClient, function_course: CourseFixture
 ) -> ExerciseFixture:
-    request = CreateExerciseRequestSchema(courseId=function_course.id)
-    response = exercises_client.create_exercise(request)
-    return ExerciseFixture(request=request, response=response)
+    request = CreateExerciseRequestSchema(courseId=function_course.response.course.id)
+    response = exercises_client.create_exercise_api(request)
+    return ExerciseFixture(request=request, response=CreateExerciseResponseSchema.model_validate_json(response.text))
