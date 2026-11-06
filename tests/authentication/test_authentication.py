@@ -8,12 +8,19 @@ from tools.assertions.authentication import assert_login_response
 from tools.assertions.base import assert_status_code
 from tools.assertions.schema import validate_json_schema
 from tools.allure.tags import AllureTag
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeatures
+from tools.allure.stories import AllureStory
+
 
 @pytest.mark.regression
 @pytest.mark.authentication
 @allure.tag(AllureTag.REGRESSION, AllureTag.AUTHENTICATION)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeatures.AUTHENTICATION)
 class TestAuthentication:
     @allure.title("Login with correct email and password")
+    @allure.story(AllureStory.LOGIN)
     def test_login(self, function_user: UserFixture, authentication_client: AuthenticationClient ):
 
         request = LoginRequestSchema(

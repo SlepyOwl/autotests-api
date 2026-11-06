@@ -1,1 +1,74 @@
-{"name": "Create file with empty directory ", "status": "broken", "statusDetails": {"message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for ValidationErrorResponseSchema\ndetail.0.ctx\n  Field required [type=missing, input_value={'type': 'missing', 'loc'...equired', 'input': None}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing", "trace": "self = <test_files.TestFiles object at 0x000002AD2A567950>, files_client = <clients.files.files_client.FilesClient object at 0x000002AD2CC265D0>\n\n    @allure.tag(AllureTag.VALIDATE_ENTITRY)\n    @allure.title(\"Create file with empty directory \")\n    def test_create_file_with_empty_directory(self, files_client: FilesClient):\n        request = CreateFileRequestSchema(\n            directory=\"\", upload_file=\"./testdata/files/lion.png\"\n        )\n        response = files_client.create_file_api(request)\n>       response_data = ValidationErrorResponseSchema.model_validate_json(response.text)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       pydantic_core._pydantic_core.ValidationError: 1 validation error for ValidationErrorResponseSchema\nE       detail.0.ctx\nE         Field required [type=missing, input_value={'type': 'missing', 'loc'...equired', 'input': None}, input_type=dict]\nE           For further information visit https://errors.pydantic.dev/2.13/v/missing\n\ntests\\files\\test_files.py:79: ValidationError"}, "start": 1793896899832, "stop": 1793896901861, "uuid": "9a93c693-90e4-4408-aded-ce83031fbce0", "historyId": "8960f02b9d182e132fc8a9ae4d4d1be9", "testCaseId": "8960f02b9d182e132fc8a9ae4d4d1be9", "fullName": "tests.files.test_files.TestFiles#test_create_file_with_empty_directory", "labels": [{"name": "tag", "value": "REGRESSION"}, {"name": "tag", "value": "VALIDATE_ENTITY"}, {"name": "tag", "value": "FILES"}, {"name": "tag", "value": "regression"}, {"name": "tag", "value": "files"}, {"name": "parentSuite", "value": "tests.files"}, {"name": "suite", "value": "test_files"}, {"name": "subSuite", "value": "TestFiles"}, {"name": "host", "value": "DESKTOP-7K7SPIG"}, {"name": "thread", "value": "9288-MainThread"}, {"name": "framework", "value": "pytest"}, {"name": "language", "value": "cpython3"}, {"name": "package", "value": "tests.files.test_files"}], "titlePath": ["tests", "files", "test_files.py", "TestFiles"]}
+{
+    "name": "Create file with empty directory ",
+    "status": "broken",
+    "statusDetails": {
+        "message": "pydantic_core._pydantic_core.ValidationError: 1 validation error for ValidationErrorResponseSchema\ndetail.0.ctx\n  Field required [type=missing, input_value={'type': 'missing', 'loc'...equired', 'input': None}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+        "trace": "self = <test_files.TestFiles object at 0x000002AD2A567950>, files_client = <clients.files.files_client.FilesClient object at 0x000002AD2CC265D0>\n\n    @allure.tag(AllureTag.VALIDATE_ENTITITY)\n    @allure.title(\"Create file with empty directory \")\n    def test_create_file_with_empty_directory(self, files_client: FilesClient):\n        request = CreateFileRequestSchema(\n            directory=\"\", upload_file=\"./testdata/files/lion.png\"\n        )\n        response = files_client.create_file_api(request)\n>       response_data = ValidationErrorResponseSchema.model_validate_json(response.text)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       pydantic_core._pydantic_core.ValidationError: 1 validation error for ValidationErrorResponseSchema\nE       detail.0.ctx\nE         Field required [type=missing, input_value={'type': 'missing', 'loc'...equired', 'input': None}, input_type=dict]\nE           For further information visit https://errors.pydantic.dev/2.13/v/missing\n\ntests\\files\\test_files.py:79: ValidationError"
+    },
+    "start": 1793896899832,
+    "stop": 1793896901861,
+    "uuid": "9a93c693-90e4-4408-aded-ce83031fbce0",
+    "historyId": "8960f02b9d182e132fc8a9ae4d4d1be9",
+    "testCaseId": "8960f02b9d182e132fc8a9ae4d4d1be9",
+    "fullName": "tests.files.test_files.TestFiles#test_create_file_with_empty_directory",
+    "labels": [
+        {
+            "name": "tag",
+            "value": "REGRESSION"
+        },
+        {
+            "name": "tag",
+            "value": "VALIDATE_ENTITY"
+        },
+        {
+            "name": "tag",
+            "value": "FILES"
+        },
+        {
+            "name": "tag",
+            "value": "regression"
+        },
+        {
+            "name": "tag",
+            "value": "files"
+        },
+        {
+            "name": "parentSuite",
+            "value": "tests.files"
+        },
+        {
+            "name": "suite",
+            "value": "test_files"
+        },
+        {
+            "name": "subSuite",
+            "value": "TestFiles"
+        },
+        {
+            "name": "host",
+            "value": "DESKTOP-7K7SPIG"
+        },
+        {
+            "name": "thread",
+            "value": "9288-MainThread"
+        },
+        {
+            "name": "framework",
+            "value": "pytest"
+        },
+        {
+            "name": "language",
+            "value": "cpython3"
+        },
+        {
+            "name": "package",
+            "value": "tests.files.test_files"
+        }
+    ],
+    "titlePath": [
+        "tests",
+        "files",
+        "test_files.py",
+        "TestFiles"
+    ]
+}

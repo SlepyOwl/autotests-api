@@ -10,12 +10,18 @@ from tools.assertions.base import assert_status_code
 from tools.assertions.exercises import assert_create_exercise_response, assert_exercise_not_found_response, assert_get_exercises_response, assert_update_exercise_response
 from tools.assertions.schema import validate_json_schema
 from tools.allure.tags import AllureTag
+from tools.allure.epics import AllureEpic
+from tools.allure.features import AllureFeatures
+from tools.allure.stories import AllureStory
 
 @pytest.mark.exercises
 @pytest.mark.regression
 @allure.tag(AllureTag.EXERCISES, AllureTag.REGRESSION)
+@allure.epic(AllureEpic.LMS)
+@allure.feature(AllureFeatures.EXERCISES)
 class TestExercises:
     @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
     @allure.title("Create exercise")
     def test_create_exercise(
         self,
@@ -31,6 +37,7 @@ class TestExercises:
         validate_json_schema(response.json(), response_data.model_json_schema())    
 
     @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.story(AllureStory.CREATE_ENTITY)
     @allure.title("Get exercise")
     def test_get_exercise(
             self,
@@ -46,6 +53,7 @@ class TestExercises:
         validate_json_schema(response.json(), response_data.model_json_schema()) 
 
     @allure.tag(AllureTag.UPDATE_ENTITY)
+    @allure.story(AllureStory.UPDATE_ENTITY)
     @allure.title("Update exercise")
     def  test_update_exercise(
         self,
@@ -64,6 +72,7 @@ class TestExercises:
         validate_json_schema(response.json(), response_data.model_json_schema())
 
     @allure.tag(AllureTag.DELETE_ENTITY)
+    @allure.story(AllureStory.DELETE_ENTITY)
     @allure.title("Delete exercise")
     def  test_delete_exercise (
         self,
@@ -84,6 +93,7 @@ class TestExercises:
         assert_exercise_not_found_response(actual=actual_error, expected=expected_error)
 
     @allure.tag(AllureTag.GET_ENTITES)
+    @allure.story(AllureStory.GET_ENTITIES)
     @allure.title("Get exercises")
     def test_get_exercises(
         self, exercises_client: ExercisesClient, function_exercise: ExerciseFixture

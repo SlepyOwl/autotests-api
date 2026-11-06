@@ -1,1 +1,74 @@
-{"name": "Get file with incorrect file id", "status": "failed", "statusDetails": {"message": "AssertionError: Incorrect value: \"context\". Expected value: {'error': 'invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1'}. Actual value: {'error': 'invalid character: found `i` at 1'}", "trace": "self = <test_files.TestFiles object at 0x000002AD2A5CE7A0>, files_client = <clients.files.files_client.FilesClient object at 0x000002AD2CCB10F0>\n\n    @allure.tag(AllureTag.VALIDATE_ENTITRY)\n    @allure.title(\"Get file with incorrect file id\")\n    def test_get_file_with_incorrect_file_id(self, files_client: FilesClient):\n        response = files_client.get_file_api(\"incorrect-file-id\")\n        response_data = ValidationErrorResponseSchema.model_validate_json(response.text)\n    \n        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_ENTITY)\n>       assert_get_file_with_incorrect_file_id_response(response_data)\n\ntests\\files\\test_files.py:112: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\ntools\\assertions\\files.py:160: in assert_get_file_with_incorrect_file_id_response\n    assert_validation_error_response(actual, expected)\ntools\\assertions\\errors.py:50: in assert_validation_error_response\n    assert_validation_error(actual.details[index], detail)\ntools\\assertions\\errors.py:32: in assert_validation_error\n    assert_equal(actual.context, expected.context, \"context\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nactual = {'error': 'invalid character: found `i` at 1'}, expected = {'error': 'invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1'}, name = 'context'\n\n    def assert_equal(actual: Any, expected: Any, name: str):\n        \"\"\"\n        Проверяет, что фактическое значение равно ожидаемому.\n    \n        :param name: Название проверяемого значения.\n        :param actual: Фактическое значение.\n        :param expected: Ожидаемое значение.\n        :raises AssertionError: Если фактическое значение не равно ожидаемому.\n        \"\"\"\n>       assert actual == expected, (\n               ^^^^^^^^^^^^^^^^^^\n            f'Incorrect value: \"{name}\". '\n            f'Expected value: {expected}. '\n            f'Actual value: {actual}'\n        )\nE       AssertionError: Incorrect value: \"context\". Expected value: {'error': 'invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1'}. Actual value: {'error': 'invalid character: found `i` at 1'}\n\ntools\\assertions\\base.py:28: AssertionError"}, "start": 1793896914137, "stop": 1793896916148, "uuid": "b6ad3593-b974-4149-a869-7a6ca0464274", "historyId": "f0e4e32ce5f83acacb9e8ff7318ebd7e", "testCaseId": "f0e4e32ce5f83acacb9e8ff7318ebd7e", "fullName": "tests.files.test_files.TestFiles#test_get_file_with_incorrect_file_id", "labels": [{"name": "tag", "value": "REGRESSION"}, {"name": "tag", "value": "VALIDATE_ENTITY"}, {"name": "tag", "value": "FILES"}, {"name": "tag", "value": "regression"}, {"name": "tag", "value": "files"}, {"name": "parentSuite", "value": "tests.files"}, {"name": "suite", "value": "test_files"}, {"name": "subSuite", "value": "TestFiles"}, {"name": "host", "value": "DESKTOP-7K7SPIG"}, {"name": "thread", "value": "9288-MainThread"}, {"name": "framework", "value": "pytest"}, {"name": "language", "value": "cpython3"}, {"name": "package", "value": "tests.files.test_files"}], "titlePath": ["tests", "files", "test_files.py", "TestFiles"]}
+{
+    "name": "Get file with incorrect file id",
+    "status": "failed",
+    "statusDetails": {
+        "message": "AssertionError: Incorrect value: \"context\". Expected value: {'error': 'invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1'}. Actual value: {'error': 'invalid character: found `i` at 1'}",
+        "trace": "self = <test_files.TestFiles object at 0x000002AD2A5CE7A0>, files_client = <clients.files.files_client.FilesClient object at 0x000002AD2CCB10F0>\n\n    @allure.tag(AllureTag.VALIDATE_ENTITITY)\n    @allure.title(\"Get file with incorrect file id\")\n    def test_get_file_with_incorrect_file_id(self, files_client: FilesClient):\n        response = files_client.get_file_api(\"incorrect-file-id\")\n        response_data = ValidationErrorResponseSchema.model_validate_json(response.text)\n    \n        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_ENTITY)\n>       assert_get_file_with_incorrect_file_id_response(response_data)\n\ntests\\files\\test_files.py:112: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\ntools\\assertions\\files.py:160: in assert_get_file_with_incorrect_file_id_response\n    assert_validation_error_response(actual, expected)\ntools\\assertions\\errors.py:50: in assert_validation_error_response\n    assert_validation_error(actual.details[index], detail)\ntools\\assertions\\errors.py:32: in assert_validation_error\n    assert_equal(actual.context, expected.context, \"context\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nactual = {'error': 'invalid character: found `i` at 1'}, expected = {'error': 'invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1'}, name = 'context'\n\n    def assert_equal(actual: Any, expected: Any, name: str):\n        \"\"\"\n        Проверяет, что фактическое значение равно ожидаемому.\n    \n        :param name: Название проверяемого значения.\n        :param actual: Фактическое значение.\n        :param expected: Ожидаемое значение.\n        :raises AssertionError: Если фактическое значение не равно ожидаемому.\n        \"\"\"\n>       assert actual == expected, (\n               ^^^^^^^^^^^^^^^^^^\n            f'Incorrect value: \"{name}\". '\n            f'Expected value: {expected}. '\n            f'Actual value: {actual}'\n        )\nE       AssertionError: Incorrect value: \"context\". Expected value: {'error': 'invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1'}. Actual value: {'error': 'invalid character: found `i` at 1'}\n\ntools\\assertions\\base.py:28: AssertionError"
+    },
+    "start": 1793896914137,
+    "stop": 1793896916148,
+    "uuid": "b6ad3593-b974-4149-a869-7a6ca0464274",
+    "historyId": "f0e4e32ce5f83acacb9e8ff7318ebd7e",
+    "testCaseId": "f0e4e32ce5f83acacb9e8ff7318ebd7e",
+    "fullName": "tests.files.test_files.TestFiles#test_get_file_with_incorrect_file_id",
+    "labels": [
+        {
+            "name": "tag",
+            "value": "REGRESSION"
+        },
+        {
+            "name": "tag",
+            "value": "VALIDATE_ENTITY"
+        },
+        {
+            "name": "tag",
+            "value": "FILES"
+        },
+        {
+            "name": "tag",
+            "value": "regression"
+        },
+        {
+            "name": "tag",
+            "value": "files"
+        },
+        {
+            "name": "parentSuite",
+            "value": "tests.files"
+        },
+        {
+            "name": "suite",
+            "value": "test_files"
+        },
+        {
+            "name": "subSuite",
+            "value": "TestFiles"
+        },
+        {
+            "name": "host",
+            "value": "DESKTOP-7K7SPIG"
+        },
+        {
+            "name": "thread",
+            "value": "9288-MainThread"
+        },
+        {
+            "name": "framework",
+            "value": "pytest"
+        },
+        {
+            "name": "language",
+            "value": "cpython3"
+        },
+        {
+            "name": "package",
+            "value": "tests.files.test_files"
+        }
+    ],
+    "titlePath": [
+        "tests",
+        "files",
+        "test_files.py",
+        "TestFiles"
+    ]
+}
