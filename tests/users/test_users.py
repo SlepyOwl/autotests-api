@@ -11,8 +11,10 @@ from tools.assertions.base import assert_status_code
 from tools.assertions.schema import validate_json_schema
 from tools.assertions.users import assert_create_user_response, assert_get_user_response
 from tools.fakers import fake
+from allure_commons.types import Severity
 import pytest
 import allure
+
 
 @pytest.mark.users
 @pytest.mark.regression
@@ -24,6 +26,7 @@ class TestUsers:
     @allure.title("Create user")
     @allure.tag(AllureTag.CREATE_ENTITY)
     @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.severity(Severity.BLOCKER)
     def test_create_user(self, domain: str, public_users_client: PublicUsersClient):
 
         request = CreateUserRequestSchema(email=fake.email(domain=domain))
@@ -37,6 +40,7 @@ class TestUsers:
     @allure.title("Get user me")
     @allure.tag(AllureTag.GET_ENTITY)
     @allure.story(AllureStory.GET_ENTITY)
+    @allure.severity(Severity.CRITICAL)
     def test_get_user_me(
             self, 
             function_user: UserFixture, 

@@ -13,16 +13,21 @@ from tools.allure.tags import AllureTag
 from tools.allure.epics import AllureEpic
 from tools.allure.features import AllureFeatures
 from tools.allure.stories import AllureStory
+from allure_commons.types import Severity
 
 @pytest.mark.exercises
 @pytest.mark.regression
 @allure.tag(AllureTag.EXERCISES, AllureTag.REGRESSION)
 @allure.epic(AllureEpic.LMS)
 @allure.feature(AllureFeatures.EXERCISES)
+
 class TestExercises:
+
     @allure.tag(AllureTag.CREATE_ENTITY)
     @allure.story(AllureStory.CREATE_ENTITY)
     @allure.title("Create exercise")
+    @allure.severity(Severity.BLOCKER)
+
     def test_create_exercise(
         self,
         exercises_client:ExercisesClient,
@@ -39,6 +44,8 @@ class TestExercises:
     @allure.tag(AllureTag.CREATE_ENTITY)
     @allure.story(AllureStory.CREATE_ENTITY)
     @allure.title("Get exercise")
+    @allure.severity(Severity.BLOCKER)
+
     def test_get_exercise(
             self,
             exercises_client:ExercisesClient,
@@ -55,6 +62,8 @@ class TestExercises:
     @allure.tag(AllureTag.UPDATE_ENTITY)
     @allure.story(AllureStory.UPDATE_ENTITY)
     @allure.title("Update exercise")
+    @allure.severity(Severity.CRITICAL)
+
     def  test_update_exercise(
         self,
         exercises_client:ExercisesClient,
@@ -74,6 +83,8 @@ class TestExercises:
     @allure.tag(AllureTag.DELETE_ENTITY)
     @allure.story(AllureStory.DELETE_ENTITY)
     @allure.title("Delete exercise")
+    @allure.severity(Severity.CRITICAL)
+
     def  test_delete_exercise (
         self,
         exercises_client:ExercisesClient,
@@ -95,6 +106,8 @@ class TestExercises:
     @allure.tag(AllureTag.GET_ENTITES)
     @allure.story(AllureStory.GET_ENTITIES)
     @allure.title("Get exercises")
+    @allure.severity(Severity.BLOCKER)
+
     def test_get_exercises(
         self, exercises_client: ExercisesClient, function_exercise: ExerciseFixture
     ):
