@@ -20,11 +20,14 @@ from allure_commons.types import Severity
 @allure.tag(AllureTag.COURSES, AllureTag.REGRESSION)
 @allure.epic(AllureEpic.LMS)
 @allure.feature(AllureFeatures.COURSES)
+@allure.parent_suite(AllureEpic.LMS)
+@allure.suite(AllureFeatures.COURSES)
 
 class TestCourses:
 
     @allure.tag(AllureTag.GET_ENTITES)
     @allure.story(AllureStory.GET_ENTITIES)
+    @allure.sub_suite(AllureStory.GET_ENTITIES)
     @allure.title("Get courses")
     @allure.severity(Severity.BLOCKER)
     
@@ -44,6 +47,7 @@ class TestCourses:
 
     @allure.tag(AllureTag.UPDATE_ENTITY)
     @allure.story(AllureStory.UPDATE_ENTITY)
+    @allure.sub_suite(AllureStory.UPDATE_ENTITY)
     @allure.title("Update course")
     @allure.severity(Severity.CRITICAL)
 
@@ -59,6 +63,7 @@ class TestCourses:
 
     @allure.tag(AllureTag.CREATE_ENTITY)
     @allure.story(AllureStory.CREATE_ENTITY)
+    @allure.sub_suite(AllureStory.CREATE_ENTITY)
     @allure.title("Create course")
     @allure.severity(Severity.BLOCKER)
 
