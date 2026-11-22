@@ -30,7 +30,7 @@ class FilesClient(APIClient):
         return self.post(
             "/api/v1/files",
             data=request.model_dump(by_alias=True, exclude={'upload_file'}),
-            files={"upload_file": open(request.upload_file, 'rb')}
+            files={"upload_file": request.upload_file.read_bytes()}
         )
 
     @allure.step("Delete file by file_id {file_id}")
@@ -48,7 +48,7 @@ class FilesClient(APIClient):
         return CreateFileResponseSchema.model_validate_json(response.text)
         
 
-# Добавляем builder для FilesClient
+
 def get_files_client(user: AuthenticationUserSchema) -> FilesClient:
     """
     Функция создаёт экземпляр FilesClient с уже настроенным HTTP-клиентом.
