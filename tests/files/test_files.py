@@ -12,7 +12,7 @@ from clients.files.files_schema import (
     GetFileResponseSchema,
 )
 from fixtures.files import FileFixture
-from tests.pytest.test_fixtures import settings
+from config import settings
 from tools.assertions.base import assert_status_code
 from tools.assertions.files import (
     assert_create_file_response,
@@ -45,7 +45,7 @@ class TestFiles:
     @allure.title("Create file")
     @allure.severity(Severity.BLOCKER)
     def test_create_file(self, files_client: FilesClient):
-        request = CreateFileRequestSchema(upload_file= settings.test_data.image_png_file)
+        request = CreateFileRequestSchema(upload_file=settings.test_data.image_png_file)
         response = files_client.create_file_api(request)
         response_data = CreateFileResponseSchema.model_validate_json(response.text)
 
@@ -54,6 +54,7 @@ class TestFiles:
 
         validate_json_schema(response.json(), response_data.model_json_schema())
 
+    
     @allure.tag(AllureTag.GET_ENTITY)
     @allure.story(AllureStory.GET_ENTITY)
     @allure.sub_suite(AllureStory.GET_ENTITY)
@@ -78,9 +79,8 @@ class TestFiles:
             filename="", upload_file="./testdata/files/lion.png"
         )
         response = files_client.create_file_api(request)
-        print(response.text)
         response_data = ValidationErrorResponseSchema.model_validate_json(response.text)
-        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_ENTITY)
+        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_CONTENT)
         assert_create_file_with_empty_filename_response(response_data)
 
         validate_json_schema(response.json(), response_data.model_json_schema())
@@ -96,12 +96,12 @@ class TestFiles:
         )
         response = files_client.create_file_api(request)
         response_data = ValidationErrorResponseSchema.model_validate_json(response.text)
-
-        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_ENTITY)
+        assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_CONTENT)
         assert_create_file_with_empty_directory_response(response_data)
 
         validate_json_schema(response.json(), response_data.model_json_schema())
 
+    
     @allure.story(AllureStory.DELETE_ENTITY)
     @allure.sub_suite(AllureStory.DELETE_ENTITY)
     @allure.tag(AllureTag.DELETE_ENTITY)
@@ -129,6 +129,11 @@ class TestFiles:
     def test_get_file_with_incorrect_file_id(self, files_client: FilesClient):
         response = files_client.get_file_api("incorrect-file-id")
         response_data = ValidationErrorResponseSchema.model_validate_json(response.text)
+
+        actual_context = response_data.details[0].message
+        print("\n\n=== ACTUAL CONTEXT VALUE ===")
+        print(actual_context)
+        print("============================\n\n")
 
         assert_status_code(response.status_code, HTTPStatus.UNPROCESSABLE_ENTITY)
         assert_get_file_with_incorrect_file_id_response(response_data)

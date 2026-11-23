@@ -4,7 +4,7 @@ from clients.files.files_schema import CreateFileRequestSchema, CreateFileRespon
 from pydantic import BaseModel
 import pytest
 
-from tests.pytest.test_fixtures import settings
+from config import settings
 
 class FileFixture(BaseModel):
     request: CreateFileRequestSchema
